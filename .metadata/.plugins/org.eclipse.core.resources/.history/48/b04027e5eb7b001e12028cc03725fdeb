@@ -1,0 +1,7 @@
+create table T_User (
+  id int not null AUTO_INCREMENT,
+  firstname varchar(100) not null,
+  lastname varchar(100) not null,
+  email varchar(100) not null
+  PRIMARY KEY ( id )
+);

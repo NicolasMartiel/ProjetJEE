@@ -1,0 +1,32 @@
+package com.nm.webapp.repositories;
+
+import java.util.List;
+
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.client.RestTemplate;
+
+import com.nm.webapp.models.Post;
+
+@Repository
+public class PostRepository {
+
+	String baseApiUrl = "http://localhost:8081/apipost";
+	
+	public List<Post> getPosts() {
+		
+		String url= baseApiUrl + "/posts";
+		
+		RestTemplate resttemplate = new RestTemplate();
+		//Do an http request to the api
+		ResponseEntity<List<Post>> response = resttemplate.exchange(url,HttpMethod.GET,null,new ParameterizedTypeReference<List<Post>>() {
+		});
+		
+		return response.getBody();		
+	}
+	
+	public
+	
+}

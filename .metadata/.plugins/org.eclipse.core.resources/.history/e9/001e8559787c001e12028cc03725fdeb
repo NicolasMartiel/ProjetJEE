@@ -1,0 +1,13 @@
+package com.nm.webapp.models;
+
+public class Post {
+
+	private int id;
+	
+	private String title;
+	
+	private String description;
+	
+	
+	
+}

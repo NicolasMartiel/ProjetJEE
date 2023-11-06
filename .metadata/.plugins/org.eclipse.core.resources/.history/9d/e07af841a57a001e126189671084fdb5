@@ -1,0 +1,27 @@
+package com.nm.webapp.services;
+
+import java.util.List;
+
+import com.nm.webapp.models.User;
+import com.nm.webapp.repositories.UserRepository;
+
+public class UserService {
+
+	private UserRepository userrepository;
+	
+	public UserService(UserRepository userrepository) {
+		this.userrepository=userrepository;
+	}
+	
+	public List<User> getUsers() {
+		
+		return this.userrepository.getUsers();
+		
+	}
+	
+	public User addUser(User user) {
+		
+		return this.userrepository.addUser(user);
+		
+	}
+}

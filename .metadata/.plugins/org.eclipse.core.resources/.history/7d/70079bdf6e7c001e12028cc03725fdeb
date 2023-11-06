@@ -1,0 +1,44 @@
+package com.nm.webapp.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.nm.webapp.models.Post;
+import com.nm.webapp.services.PostService;
+import com.nm.webapp.services.UserService;
+
+@Controller
+public class UpdatePostController {
+
+	// For now, we are User 1,2 or 3, since login and register are not
+	// implemented yet.
+	int usertoUse = 1;
+	
+	UserService _userservice;
+	PostService _postservice;
+
+	public UpdatePostController(UserService _userservice, PostService _postservice) {
+
+		this._userservice = _userservice;
+		this._postservice = _postservice;
+
+	}
+
+	@GetMapping("/myprofile/updatepost/{postid}")
+	public String loadPost(@PathVariable int postid, Model model) {
+
+		Post oldpost = this._postservice.getPostById(postid);
+		model.addAttribute("oldpost", oldpost);
+		return "updatepost";
+
+	}
+	
+	@PostMapping("/myprofile/updatepost/{postid}")
+	public String updatePost(@PathVariable int postid,Model model) {
+		
+		
+	}
+}

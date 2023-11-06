@@ -1,0 +1,51 @@
+package com.nm.projetjee;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.nm.projetjee.models.Post;
+import com.nm.projetjee.models.User;
+import com.nm.projetjee.repositories.PostRepository;
+import com.nm.projetjee.repositories.UserRepository;
+
+@SpringBootApplication
+public class ProjetjeeApplication implements CommandLineRunner{
+	
+	UserRepository userrepository;
+	PostRepository postrepository;
+	
+	public ProjetjeeApplication(UserRepository userrepository, PostRepository postrepository) {
+		
+		this.userrepository=userrepository;
+		this.postrepository=postrepository;
+		
+	}
+	
+	public static void main(String[] args) {
+		SpringApplication.run(ProjetjeeApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+
+		User user1=new User("John", "Doe", "johndoe@gmail.com");
+		User user2=new User("Jane","Doe","janedoe@orange.fr");
+		User user3=new User("Paul","Martin","paulm@outlook.fr");
+		
+		Post post1_1=new Post("post zéro","premier post du site", user1);
+		Post post2_1=new Post("post sympa","petit post sympathique", user2);
+		Post post3_1=new Post("post intéressant","post super intéressant", user3);
+		
+		userrepository.save(user1);
+		userrepository.save(user2);
+		userrepository.save(user3);
+		postrepository.save(post1_1);
+		postrepository.save(post2_1);
+		postrepository.save(post3_1);
+
+
+		
+	}
+
+}

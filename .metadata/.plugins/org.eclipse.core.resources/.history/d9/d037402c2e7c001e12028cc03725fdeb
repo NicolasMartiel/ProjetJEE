@@ -1,0 +1,48 @@
+package com.nm.webapp.repositories;
+
+import java.util.List;
+
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.client.RestTemplate;
+
+import com.nm.webapp.models.User;
+
+@Repository
+public class UserRepository {
+
+	 String baseApiUrl = "http://localhost:8081/apiuser";
+	
+	 public List<User> getUsers() {
+		 
+		 String url = baseApiUrl + "/users";
+		 
+		 RestTemplate resttemplate = new RestTemplate();
+		 //Do an http request to the api
+		 ResponseEntity<List<User>> response = resttemplate.exchange(url,HttpMethod.GET,null,new ParameterizedTypeReference<List<User>>() {
+		});
+		 
+		 return response.getBody();
+	 }
+	 
+	 public User addUser(User user) {
+		 
+		 String url = baseApiUrl + "/addUser";
+		 
+		 RestTemplate resttemplate = new RestTemplate();
+		 
+		 HttpEntity<User> request = new HttpEntity<User>(user);
+		 
+		 ResponseEntity<User> response = resttemplate.exchange(url, HttpMethod.POST,request,User.class);
+		 
+		 return response.getBody();
+	 }
+	 
+	 public User getUser(int id) {
+		 
+		 String url = baseApiUrl + "/user/" + id;
+	 }
+}

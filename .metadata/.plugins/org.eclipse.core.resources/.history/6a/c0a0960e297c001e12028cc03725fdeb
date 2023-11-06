@@ -1,0 +1,21 @@
+package com.nm.webapp.controllers;
+
+import org.springframework.stereotype.Controller;
+
+import com.nm.webapp.services.PostService;
+import com.nm.webapp.services.UserService;
+
+@Controller
+public class MyProfileController {
+
+	UserService _userservice;
+	PostService _postservice;
+	
+	public HomeController(UserService _userservice,PostService _postservice) {
+		
+		this._userservice=_userservice;
+		this._postservice= _postservice;
+		
+	}
+	
+}

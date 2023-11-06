@@ -1,0 +1,32 @@
+package com.nm.webapp.controllers;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.nm.webapp.models.Post;
+import com.nm.webapp.services.PostService;
+
+@Controller
+public class PostController {
+	
+	PostService _postservice;
+	
+	public PostController(PostService _postservice) {
+	
+		this._postservice=_postservice;
+		
+	}
+	
+	@GetMapping(path = "/")
+	public String loadPosts(Model model) {
+		
+		List<Post> posts = this._postservice.getPosts();
+		model.addAttribute("posts",posts);
+		return "index";
+		
+	}
+	
+}

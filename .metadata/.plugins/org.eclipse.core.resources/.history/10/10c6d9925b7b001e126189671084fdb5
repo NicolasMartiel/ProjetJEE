@@ -1,0 +1,33 @@
+package com.nm.webapp.controllers;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.nm.webapp.models.User;
+import com.nm.webapp.services.UserService;
+
+@Controller
+public class UserController {
+
+	UserService _userservice;
+	
+	public UserController(UserService _userservice) {
+		
+		this._userservice=_userservice;
+		
+	}
+	
+	@GetMapping(path = "/")
+	public String welcome(Model model) {
+		
+		List<User> users= this._userservice.getUsers();
+		
+		model.addAttribute("users",users);
+		
+		return "index";
+	}
+	
+}

@@ -1,0 +1,79 @@
+package com.nm.projetjee;
+
+import java.util.Date;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.nm.projetjee.models.Post;
+import com.nm.projetjee.models.User;
+import com.nm.projetjee.repositories.PostRepository;
+import com.nm.projetjee.repositories.UserRepository;
+
+@SpringBootApplication
+public class ProjetjeeApplication implements CommandLineRunner {
+
+	UserRepository userrepository;
+	PostRepository postrepository;
+
+	public ProjetjeeApplication(UserRepository userrepository, PostRepository postrepository) {
+
+		this.userrepository = userrepository;
+		this.postrepository = postrepository;
+
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(ProjetjeeApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		
+		User user1;
+		User user2;
+		User user3;
+		Post post1_1;
+		Post post2_1;
+		Post post3_1;
+		
+		if (this.userrepository.findByEmail("johndoe@gmail.com") == null) {
+
+			 user1 = new User("John", "Doe", "johndoe@gmail.com");
+			 
+			 post1_1 = new Post("post zéro", "premier post du site", user1);
+			 post1_1.setCreationDate(new Date());
+		}
+
+		if (this.userrepository.findByEmail("johndoe@gmail.com") == null) {
+
+			user2 = new User("Jane", "Doe", "janedoe@orange.fr");
+			
+			post2_1 = new Post("post sympa", "petit post sympathique", user2);
+			post2_1.setCreationDate(new Date());
+		}
+
+		if (this.userrepository.findByEmail("johndoe@gmail.com") == null) {
+
+			user3 = new User("Paul", "Martin", "paulm@outlook.fr");
+			post3_1 = new Post("post intéressant", "post super intéressant", user3);
+			post3_1.setCreationDate(new Date());
+		}
+
+		
+
+		
+
+		
+
+		userrepository.save(user1);
+		userrepository.save(user2);
+		userrepository.save(user3);
+		postrepository.save(post1_1);
+		postrepository.save(post2_1);
+		postrepository.save(post3_1);
+
+	}
+
+}

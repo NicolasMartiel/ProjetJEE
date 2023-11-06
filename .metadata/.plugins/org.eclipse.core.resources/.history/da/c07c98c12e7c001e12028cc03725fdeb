@@ -1,0 +1,33 @@
+package com.nm.webapp.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.nm.webapp.models.User;
+import com.nm.webapp.services.PostService;
+import com.nm.webapp.services.UserService;
+
+@Controller
+public class MyProfileController {
+
+	UserService _userservice;
+	PostService _postservice;
+	
+	public MyProfileController(UserService _userservice,PostService _postservice) {
+		
+		this._userservice=_userservice;
+		this._postservice= _postservice;
+		
+	}
+	
+	@GetMapping(path = "/myprofile/1")
+	public String loadData(Model model) {
+		//For now we are User 1 (John Doe), since login and register are not implemented yet
+		User user1=this._userservice.getUser(1);
+		model.addAttribute("user1",user1);
+		return "myprofile";
+		
+	}
+}

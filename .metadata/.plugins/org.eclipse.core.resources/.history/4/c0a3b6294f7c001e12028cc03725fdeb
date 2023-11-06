@@ -1,0 +1,53 @@
+package com.nm.webapp.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.nm.webapp.models.Post;
+import com.nm.webapp.models.User;
+import com.nm.webapp.services.PostService;
+import com.nm.webapp.services.UserService;
+
+@Controller
+public class AddPostController {
+
+	// For now, we are User 1 (John Doe), since login and register are not
+	// implemented yet.
+	int usertoUse = 2;
+	UserService _userservice;
+	PostService _postservice;
+
+	public AddPostController(UserService _userservice, PostService _postservice) {
+
+		this._userservice = _userservice;
+		this._postservice = _postservice;
+
+	}
+
+	@GetMapping(path = "/myprofile/{userid}/newpost")
+	public String loadData(Model model, @PathVariable int userid) {
+
+		userid = 2;
+		model.addAttribute("user1", this._userservice.getUser(userid));
+		model.addAttribute("post", new Post());
+		return "newpost";
+
+	}
+
+	@PostMapping(path = "/myprofile/{userid}/newpost")
+	public ModelAndView addPost(@ModelAttribute Post post, @PathVariable int userid) {
+
+		userid = 2;
+		User user = this._userservice.getUser(userid);
+		post.setAuthor(user);
+		this._postservice.addPost(post);
+
+		return new ModelAndView("redirect:/myprofile/{userid}");
+
+	}
+}

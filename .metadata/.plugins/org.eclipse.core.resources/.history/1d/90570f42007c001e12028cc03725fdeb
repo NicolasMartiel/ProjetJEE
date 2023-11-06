@@ -1,0 +1,32 @@
+package com.nm.webapp.services;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.nm.webapp.models.Post;
+import com.nm.webapp.repositories.PostRepository;
+
+@Service
+public class PostService {
+
+	private PostRepository postrepository;
+	
+	public PostService(PostRepository postrepository) {
+		
+		this.postrepository=postrepository;
+	}
+	
+	public List<Post> getPosts() {
+		
+		return this.postrepository.getPosts();
+	}
+	
+	public String toCreateFormattedDate(Post post) {
+		
+		Date postdate= post.getCreationDate();
+		String pattern = "MM/dd/YYYY HH:mm";
+		
+	}
+}

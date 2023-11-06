@@ -1,0 +1,2 @@
+insert into T_USER (firstname,lastname,email) values ('John','Doe','johndoe@gmail.com');
+

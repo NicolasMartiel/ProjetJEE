@@ -1,0 +1,9 @@
+package com.nm.projetjee.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.nm.projetjee.model.Post;
+
+public interface PostRepository extends JpaRepository<Post, Integer>{
+
+}

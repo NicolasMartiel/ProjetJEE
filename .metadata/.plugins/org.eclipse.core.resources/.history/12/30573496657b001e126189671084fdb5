@@ -1,0 +1,10 @@
+insert into t_user values (1,"John","Doe","johndoe@gmail.com");
+insert into t_user values (2,"Gabriel","Martin","gabrielmartin@gmail.com");
+insert into t_user values (3,"Sacha","Fernandez","sachaf@gmail.com");
+insert into t_user values (4,"Clara","Dominguez","claradom@gmail.com");
+insert into t_user values (5,"Jean","Hyde","jeanhyde@gmail.com");
+--insert into T_Post values ();
+--insert into T_Post values ();
+--insert into T_Post values ();
+--insert into T_Post values ();
+--insert into T_Post values ();

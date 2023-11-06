@@ -1,0 +1,11 @@
+package com.nm.projetjee.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.nm.projetjee.model.User;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+		
+		User findByEmail(String email);
+		
+}

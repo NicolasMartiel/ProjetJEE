@@ -1,0 +1,29 @@
+package com.nm.webapp.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.nm.webapp.services.PostService;
+import com.nm.webapp.services.UserService;
+
+@Controller
+public class AddPostController {
+	
+	UserService _userservice;
+	PostService _postservice;
+	
+	public AddPostController(UserService _userservice,PostService _postservice) {
+		
+		this._userservice=_userservice;
+		this._postservice= _postservice;
+		
+	}
+
+	@GetMapping(path = "/myprofile/newpost")
+	public String loadData(Model model) {
+		
+		return "newpost";
+		
+	}
+}

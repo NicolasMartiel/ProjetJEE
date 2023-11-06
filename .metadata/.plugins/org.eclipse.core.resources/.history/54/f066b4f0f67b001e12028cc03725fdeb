@@ -1,0 +1,17 @@
+create database apiDb
+
+use apiDb
+
+create table t_user (
+	
+	id integer AUTO_INCREMENT primary key,
+	firstname varchar(250),
+	lastname varchar(250),
+	email varchar(250)
+
+
+);
+
+
+insert into t_user (firstname,lastname,email) values ("John","Doe","test");
+

@@ -1,0 +1,5 @@
+package com.nm.webapp.models;
+
+public class User {
+
+}

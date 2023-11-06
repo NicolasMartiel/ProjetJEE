@@ -1,0 +1,5 @@
+package com.nm.webapp.repositories;
+
+public class PostRepository {
+
+}

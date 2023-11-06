@@ -1,0 +1,14 @@
+package com.nm.webapp.services;
+
+import com.nm.webapp.repositories.UserRepository;
+
+public class UserService {
+
+	private UserRepository userrepository;
+	
+	public UserService(UserRepository userrepository) {
+		this.userrepository=userrepository;
+	}
+	
+	
+}

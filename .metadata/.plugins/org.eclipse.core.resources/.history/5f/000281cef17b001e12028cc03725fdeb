@@ -1,0 +1,26 @@
+package com.nm.projetjee;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.nm.projetjee.models.User;
+import com.nm.projetjee.repositories.UserRepository;
+
+@SpringBootApplication
+public class ProjetjeeApplication implements CommandLineRunner{
+	
+	UserRepository userrepository;
+	
+	public static void main(String[] args) {
+		SpringApplication.run(ProjetjeeApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+
+		userrepository.save(new User("John", "Doe", "johndoe@gmail.com"));
+		
+	}
+
+}
