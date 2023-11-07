@@ -11,19 +11,19 @@ Technologies utilisées:
 Pour accéder à la base de donnée embarquée avec l'api:   
 -Demarrer l'api  
 -Se rendre à localhost:8081/h2  
--Entrer l'url de la bdd ainsi que les identifiants trouvable à src/main/resources/applications.properties  
+-Entrer l'url de la bdd ainsi que les identifiants trouvables à src/main/resources/applications.properties  
   
 Pour voir le projet (on se situe a la racine) :  
 -Builder l'api soit via un ide soit en utilisant le terminal:  
 `$cd projetjee`  
-`$ mvn clean install` il faut bien sûr avoir mvn d'installé (prendre une version compatible avec java 17+)  
+`$ mvn clean install` il faut bien sûr avoir maven d'installé (prendre une version compatible avec java 17+)  
 -Puis démarrer l'api avec la commande:  
 `$ java -jar target/projetjeeAPI-0.0.1-SNAPSHOT.jar`  
   
 le projet est compatible avec java 17+ donc il faut exécuter la commande précedente en ayant  
 le jre ou le jdk à la bonne version (17+)  
   
-ensuite  pour démarrer l'application web :
+ensuite  pour démarrer l'application web :  
 -Builder l'application web comme pour l'api mais en se rendant sur webapp (`$ cd ../webapp`)  
 -Démarrer l'application web avec la commande:  
 `$ java -jar target/webapp-0.0.1-SNAPSHOT.jar`  
